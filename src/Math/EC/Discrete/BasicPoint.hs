@@ -1,10 +1,10 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
 
-module Math.EC.BasicPoint(
+module Math.EC.Discrete.BasicPoint(
        BasicPoint(..),
        ) where
 
-import Math.EC.Point.Class
+import Math.EC.Discrete.Point.Class
 
 -- | Uncompressed representation of elliptic curve points.
 data BasicPoint =

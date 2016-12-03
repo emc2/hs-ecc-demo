@@ -1,7 +1,7 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# LANGUAGE FlexibleInstances, UndecidableInstances #-}
 
-module Math.EC.Point.Class(
+module Math.EC.Discrete.Point.Class(
        Point(..),
        defaultShow
        ) where
