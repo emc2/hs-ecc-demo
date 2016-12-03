@@ -32,4 +32,5 @@ Library
   hs-source-dirs:       src
   build-depends:        base >= 4.8 && < 5, Cabal >= 1.16.0
   exposed-modules:      Math.EC.Discrete.Class
-                        Math.EC.Point
+                        Math.EC.BasicPoint
+                        Math.EC.Point.Class
