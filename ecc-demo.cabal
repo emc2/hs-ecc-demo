@@ -1,4 +1,4 @@
-Name:                   hs-ecc-demo
+Name:                   ecc-demo
 Category:               Math
 Version:                0.0.0
 License:                BSD3
@@ -31,4 +31,5 @@ Library
   default-language:     Haskell2010
   hs-source-dirs:       src
   build-depends:        base >= 4.8 && < 5, Cabal >= 1.16.0
-  exposed-modules:      
+  exposed-modules:      Math.EC.Discrete.Class
+                        Math.EC.Point
