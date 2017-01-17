@@ -1,29 +1,25 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
-{-# LANGUAGE MultiParamTypeClasses, FunctionalDependencies #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 
 module Math.EC.Discrete.Class(
-       DiscreteEC(..)
+       DiscreteEC(..),
+       DiscreteECGroup(..)
        ) where
 
-{-
-data ECInfo pointty =
-  ECInfo {
-    modulus :: !Integer,
-    basePoint :: pointty,
-    order :: !Integer,
-    cofactor :: !Integer
+import Math.EC.Discrete.Point.Class
 
-  }
--}
 -- | Class for discrete elliptic curves (i.e. elliptic curves mod p,
 -- for some integer p)
-class Eq pointty => DiscreteEC pointty curvety | curvety -> pointty where
+class DiscreteEC curvety where
   -- | The modulus of the discrete elliptic curve.
   modulus :: curvety -> Integer
 
-  -- | The point for infinity.
-  infinity :: curvety -> pointty
+  -- | Write out a gnuplot file with all the points graphed.
+  plotPoints  :: curvety -> FilePath -> IO ()
 
+-- | Class for group operations on discrete elliptic curves.
+class (Point pointty, DiscreteEC curvety) =>
+      DiscreteECGroup pointty curvety where
   -- | The point addition operation.
   add :: curvety -> pointty -> pointty -> pointty
 
@@ -37,9 +33,3 @@ class Eq pointty => DiscreteEC pointty curvety | curvety -> pointty where
   -- | Enumerate all points in the curve.  This will take a very long
   -- time for curves with a high modulus!
   enumerate :: curvety -> [pointty]
-
-  -- | Write out a gnuplot file with the curve equation graphed.
-  plotCurve :: curvety -> FilePath -> IO ()
-
-  -- | Write out a gnuplot file with all the points graphed.
-  plotPoints  :: curvety -> FilePath -> IO ()
