@@ -37,6 +37,7 @@ Library
                         Crypto.KeyPair
                         Crypto.Signature
                         Math.EC.Class
+                        Math.EC.Edwards
                         Math.EC.Discrete.Class
                         Math.EC.Discrete.BasicPoint
                         Math.EC.Discrete.Group

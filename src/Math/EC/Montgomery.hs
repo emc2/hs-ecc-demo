@@ -162,7 +162,15 @@ instance ECInfo (PrimeFieldEC (Montgomery Integer)) where
       (flip writeFile) outstr
 
 instance DiscreteECInfo (PrimeFieldEC (Montgomery Integer)) where
-  discriminant _ = error "Not implemented"
+  discriminant PrimeFieldEC { curve = Montgomery { montgomeryA = a,
+                                                   montgomeryB = b },
+                              modulus = m } =
+    let
+      pfsub = primeFieldSub m
+      pfmul = primeFieldMul m
+    in
+      b `pfmul` ((a `pfmul` a) `pfsub` 0)
+
   j_invariant _ = error "Not implemented"
   plotPoints _ = error "Not implemented"
 
