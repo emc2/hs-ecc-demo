@@ -7,11 +7,11 @@ module Crypto.KeyPair(
 -- | Abstract key pair type.
 data KeyPair pubty privty =
   KeyPair {
-    keyPairPriv :: !privty,
-    keyPairPub :: !pubty
+    privateKey :: !privty,
+    publicKey :: !pubty
   }
   deriving (Eq, Ord)
 
 instance (Show pubty, Show privty) => Show (KeyPair pubty privty) where
-  show KeyPair { keyPairPub = pub, keyPairPriv = priv } =
+  show KeyPair { privateKey = pub, publicKey = priv } =
     "public key = " ++ show pub ++ ", private key = " ++ show priv

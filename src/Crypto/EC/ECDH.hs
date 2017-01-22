@@ -1,6 +1,9 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
-{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses, FlexibleInstances, FlexibleContexts #-}
 
+-- | The Elliptic-Curve Diffie-Hellman key agreement protocol.  Allows
+-- two parties to agree on a shared secret using their own key-pair
+-- and the counterparty's public key.
 module Crypto.EC.ECDH(
        module Crypto.KeyAgreement,
 
@@ -10,7 +13,7 @@ module Crypto.EC.ECDH(
 import Crypto.KeyAgreement
 import Crypto.KeyPair
 import Math.EC.Discrete.Class
-import Math.EC.Discrete.Point.Class
+import Math.EC.Point.Class
 
 -- | Elliptic Curve Diffie-Hellman key agreement protocol.  This is
 -- very simple, consisting of a single message.
@@ -21,10 +24,10 @@ data ECDH =
   | Agreement { agreement :: !Integer }
     deriving (Eq, Ord, Show)
 
-instance (Point pubty, DiscreteECGroup pubty paramty) =>
-         KeyAgreement paramty pubty Integer ECDH where
+instance (Point Integer pointty, DiscreteEC pointty curvety) =>
+         KeyAgreement curvety pointty Integer ECDH where
   keyAgreement _ _ _ out @ Agreement {} = out
-  keyAgreement curve KeyPair { keyPairPriv = priv } otherpub ECDH =
+  keyAgreement curve KeyPair { privateKey = priv } otherpub ECDH =
     let
       -- Their public key is n_b * G, our public key is n_a * G.  Both
       -- parties multiply by their private keys, giving n_a * n_b * G

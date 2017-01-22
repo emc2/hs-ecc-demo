@@ -33,10 +33,14 @@ Library
   build-depends:        base >= 4.8 && < 5, Cabal >= 1.16.0
   exposed-modules:      Crypto.EC.ECDH
                         Crypto.KeyAgreement
+                        Crypto.KeyGen
                         Crypto.KeyPair
                         Crypto.Signature
+                        Math.EC.Class
                         Math.EC.Discrete.Class
                         Math.EC.Discrete.BasicPoint
-                        Math.EC.Discrete.Point.Class
-                        Math.EC.Discrete.Weierstrass
+                        Math.EC.Discrete.Group
+                        Math.EC.Discrete.PrimeField
+                        Math.EC.Point.Class
+                        Math.EC.Weierstrass
                         Math.PrimeField
