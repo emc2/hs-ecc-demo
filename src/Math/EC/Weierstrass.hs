@@ -1,6 +1,7 @@
 {-# OPTIONS_GHC -Wall -Werror #-}
 {-# LANGUAGE MultiParamTypeClasses, FlexibleInstances #-}
 
+-- | Weierstrass-form elliptic curves.  This is the "textbook" form.
 module Math.EC.Weierstrass(
        module Math.EC.Class,
        module Math.EC.Discrete.Class,
@@ -18,6 +19,7 @@ import Math.PrimeField
 
 -- | A Weierstrass-form elliptic curve.  This is a curve of the
 -- form
+--
 -- > y^2 = x^3 + Ax + B mod P
 data Weierstrass coordty =
   Weierstrass {

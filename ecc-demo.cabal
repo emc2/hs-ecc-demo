@@ -41,6 +41,7 @@ Library
                         Math.EC.Discrete.BasicPoint
                         Math.EC.Discrete.Group
                         Math.EC.Discrete.PrimeField
+                        Math.EC.Montgomery
                         Math.EC.Point.Class
                         Math.EC.Weierstrass
                         Math.PrimeField
